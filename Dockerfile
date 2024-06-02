@@ -14,9 +14,6 @@ RUN apt-get update && apt-get install -y \
     && curl -sS https://bootstrap.pypa.io/get-pip.py | python3.9 \
     && rm -rf /var/lib/apt/lists/*
 
-# Set Python 3.9 as the default python3 and pip3
-RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 \
-    && update-alternatives --install /usr/bin/pip3 pip3 /usr/local/bin/pip3 1
 
 # Install any Python dependencies required by your script
 # Assuming you have a requirements.txt file with your Python dependencies
