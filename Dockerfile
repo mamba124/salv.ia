@@ -26,10 +26,10 @@ ENV BOT_TOKEN ""
 ENV LANG "RO"
 
 # Copy your script into the container
-COPY app.py /app/app.py
+COPY . /app
 
 # Set the working directory
 WORKDIR /app
 
 # CMD is the default command to run when the container starts
-CMD ["python3", "-m", "app.py"]
+CMD ["python3", "-m", "app"]
