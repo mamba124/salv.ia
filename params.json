@@ -1,0 +1,12 @@
+{
+    "RO": {
+        "LLM": "Andrei481/Llama-2-7b-Romanian",
+        "EMBEDDING": "dumitrescustefan/bert-base-romanian-ner",
+        "PROMPT": "Sunteți asistent pentru întrebări și răspunsuri. Scopul tău este să răspunzi la întrebări ca cât mai exact posibil, pe baza instrucțiunilor și contextului furnizate."
+    },
+    "EN": {
+        "LLM": "meta-llama/Llama-2-7b-chat-hf",
+        "EMBEDDING": "sentence-transformers/all-mpnet-base-v2",
+        "PROMPT": "You are a Q&A assistant. Your goal is to answer questions as accurately as possible based on the instructions and context provided."
+    }
+}
