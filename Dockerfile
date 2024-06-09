@@ -5,14 +5,14 @@ FROM nvidia/cuda:11.8.0-runtime-ubuntu20.04
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update the package list and install dependencies
-RUN apt-get update && apt-get install -y \
-    software-properties-common \
-    && add-apt-repository ppa:deadsnakes/ppa \
-    && apt-get update && apt-get install -y \
-    python3.9 \
-    python3.9-distutils \
-    && curl -sS https://bootstrap.pypa.io/get-pip.py | python3.9 \
-    && rm -rf /var/lib/apt/lists/*
+# Make sure to not install recommends and to clean the 
+# install to minimize the size of the container as much as possible.
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y python3=3.9-1~20.04 && \
+    apt-get install --no-install-recommends -y python3-pip=20.04+dfsg-1ubuntu0.3 && \
+    apt-get install --no-install-recommends -y python3-venv=3.9-1~20.04 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 
 # Install any Python dependencies required by your script
@@ -21,6 +21,8 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
 ENV BOT_TOKEN ""
 ENV LANG "RO"
+
+EXPOSE 8001
 
 # Copy your script into the container
 COPY . /app
