@@ -8,9 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Make sure to not install recommends and to clean the 
 # install to minimize the size of the container as much as possible.
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y python3=3.9-1~20.04 && \
-    apt-get install --no-install-recommends -y python3-pip=20.04+dfsg-1ubuntu0.3 && \
-    apt-get install --no-install-recommends -y python3-venv=3.9-1~20.04 && \
+    apt-get install --no-install-recommends -y python3 && \
+    apt-get install --no-install-recommends -y python3-pip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -21,8 +20,6 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
 ENV BOT_TOKEN ""
 ENV LANG "RO"
-
-EXPOSE 8001
 
 # Copy your script into the container
 COPY . /app
