@@ -1,5 +1,5 @@
 # Use the official CUDA image from NVIDIA as a parent image
-FROM nvidia/cuda:11.8.0-runtime-ubuntu20.04
+FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
 
 # Set environment variables for non-interactive installation
 ENV DEBIAN_FRONTEND=noninteractive
