@@ -1,5 +1,5 @@
 # Use the official CUDA image from NVIDIA as a parent image
-FROM nvidia/cuda:11.8.0-runtime-ubuntu22.04
+FROM nvidia/cuda:11.8.0-runtime-ubuntu20.04
 
 # Set environment variables for non-interactive installation
 ENV DEBIAN_FRONTEND=noninteractive
@@ -8,8 +8,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Make sure to not install recommends and to clean the 
 # install to minimize the size of the container as much as possible.
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y python3 && \
-    apt-get install --no-install-recommends -y python3-pip && \
+    apt-get install --no-install-recommends -y python3.10 && \
+    apt-get install --no-install-recommends -y python3.10-pip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
