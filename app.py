@@ -37,12 +37,13 @@ def send_welcome(message):
 @bot.message_handler(func=lambda msg: True)
 def response(message):
     streaming_response = query_engine.query(message.text)
-    for text in streaming_response.response_gen:
-        try:
-            bot.reply_to(message, text)
-        except telebot.apihelper.ApiTelegramException:
-            pass
-            #bot.reply_to(message, ".")
+    bot.reply_to(message, streaming_response)
+    # for text in streaming_response.response_gen:
+    #     try:
+    #         bot.reply_to(message, text)
+    #     except telebot.apihelper.ApiTelegramException:
+    #         pass
+            
     bot.send_message(message.chat.id, "Daca v-am ajutat, va rog estimati raspunsul meu:", reply_markup=create_buttons())
    # response.print_response()
     
