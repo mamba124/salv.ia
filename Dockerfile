@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # install to minimize the size of the container as much as possible.
 RUN apt-get update && \
     apt-get install --no-install-recommends -y python3.10 && \
-    apt-get install --no-install-recommends -y python3.10-pip && \
+    apt-get install --no-install-recommends -y python3-pip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -20,6 +20,7 @@ COPY requirements.txt /tmp/requirements.txt
 RUN pip3 install --no-cache-dir -r /tmp/requirements.txt
 ENV BOT_TOKEN ""
 ENV LANG "RO"
+ENV HF_HOME=/opt/dlami/nvme/huggingface_cache
 
 # Copy your script into the container
 COPY . /app
